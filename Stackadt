@@ -1,0 +1,89 @@
+//array implementation of stack adt
+import java.util.*;
+import java.io.*;
+interface Mystack
+{
+public void push();
+public void pop();
+public void display();
+}
+class Stack_array implements Mystack
+{
+final static int n=5;
+int stack[]=new int[n];
+int top=-1;
+public void push()
+{
+Scanner sc=new Scanner(System.in);
+if(top==n-1)
+{
+System.out.println("stack is full");
+}
+else
+{
+System.out.println("enter the element");
+String et=sc.next();
+int e=Integer.parseInt(et);
+stack[++top]=e;
+}
+}
+public void pop()
+{
+if (top<0)
+{
+System.out.println("stack  is underflow");
+}
+else
+{
+int popper=stack[top];
+top--;
+System.out.println("element popped is "+popper);
+}
+}
+public void display()
+{
+if(top<0)
+{
+System.out.println("stack is empty");
+}
+else
+{
+String str="";
+for(int i=0;i<=top;i++)
+{
+str=str+""+stack[i]+"<--";
+System.out.println("elements are:"+str);
+}
+}
+}
+}
+class StackADT
+{
+public static void main(String[] args)throws IOException
+{
+Scanner sc=new Scanner(System.in);
+Stack_array st=new Stack_array();
+int c=0;
+do
+{
+System.out.println("1.push\n2.pop\n3.display\n4.exit");
+ c=sc.nextInt();
+switch(c)
+{
+case 1:
+st.push();
+break;
+case 2:
+st.pop();
+break;
+case 3:
+st.display();
+break;
+case 4:
+System.exit(0);
+}
+}
+while(c<5);
+}
+}
+
