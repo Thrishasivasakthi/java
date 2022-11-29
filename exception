@@ -1,0 +1,44 @@
+import java.util.*;
+class MyException extends Exception
+{
+ private int ex;
+ MyException(int sum)
+ {
+ ex = sum;
+ }
+ public String toString()
+ {
+ return "The sum " + ex + " is less than zero";
+ }
+}
+class User
+{
+ static void sum(int a,int b) throws MyException
+ {
+ int sum;
+ sum=a+b; 
+ if(sum<0)
+ {
+ throw new MyException(sum); 
+ }
+ else
+ {
+ System.out.println(sum);
+ }
+ }
+ public static void main(String[] args)
+ {
+ try
+ {
+ Scanner sc=new Scanner(System.in);
+System.out.println("Enter the 2 values : ");
+int x1=sc.nextInt();
+int y1=sc.nextInt();
+sum(x1,y1);
+ }
+ catch(MyException ex)
+ {
+ System.out.println("Exception thrown : "+ex.toString()); 
+ }
+ }
+}
