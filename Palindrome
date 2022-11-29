@@ -1,0 +1,36 @@
+import java.util.*;
+class Palindrome
+{
+public static boolean isPalindrome(String str1)
+{
+String rev="";
+boolean ans=false;
+
+for(int i=str1.length()-1;i>=0;i--)
+{
+rev=rev+str1.charAt(i);
+}
+if(str1.equals(rev))
+{
+ans=true;
+}
+return ans;
+}
+public static void main(String[] args)
+{
+String str;
+System.out.println("enter the string:");
+Scanner sc=new Scanner(System.in);
+str=sc.next();
+String str1=str.toLowerCase();
+boolean a=isPalindrome(str1);
+if(a)
+{
+System.out.println("it is palindrome");
+}
+if(a==false)
+{
+System.out.println("it is not palindrome");
+}
+}
+} 
