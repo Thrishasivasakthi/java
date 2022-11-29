@@ -1,0 +1,37 @@
+import java.util.*;
+class Quadratic 
+{
+public static void main(String[] args)
+{
+Scanner sc=new Scanner(System.in);
+System.out.println("enter a");
+int a=sc.nextInt();
+System.out.println("enter b");
+int b=sc.nextInt();
+System.out.println("enter c");
+int c=sc.nextInt();
+int d=(b*b)-(4*a*c);
+if(d==0)
+{
+System.out.println("roots are real and  equal");
+int r=(-b+(int)Math.sqrt(d))/(2*a);
+int r2=r;
+System.out.println("roots are :" + r+" "+r2);
+}
+if (d>1)
+{
+System.out.println("roots are real and distinct");
+int r1=(-b+(int)Math.sqrt(d))/(2*a);
+int r2=(-b-(int)Math.sqrt(d))/(2*a);
+System.out.println("roots are :" + r1+" "+r2);
+}
+else
+{
+System.out.println("roots are complex");
+}
+}
+}
+
+
+
+
