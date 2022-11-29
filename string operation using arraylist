@@ -1,0 +1,44 @@
+import java.util.*;
+class Arrst
+{
+public static void main(String[] args)
+{
+ArrayList<String>liststrings=new ArrayList<String>();
+ArrayList<String>newstrings=new ArrayList<String>();
+Scanner sc=new Scanner(System.in);
+liststrings.add("one");
+liststrings.add("two");
+liststrings.add("three");
+liststrings.add("four");
+liststrings.add("five");
+liststrings.add("six");
+liststrings.add("seven");
+System.out.println("elements in liststrings"+liststrings);
+String[] item=new String[]{"hello","welcome"};
+Collections.addAll(liststrings,item);
+System.out.println("elements in liststrings"+liststrings);
+System.out.println("enter the element need to be searched");
+String s1=sc.nextLine();
+if(liststrings.contains(s1))
+{
+System.out.println("element found ");
+}
+else
+{
+System.out.println("element not found");
+}
+System.out.println("enter the letter for search word ");
+String s=sc.next();
+for(int i=0;i<liststrings.size();i++)
+{
+if(liststrings.get(i).startsWith(s.toLowerCase()))
+{
+newstrings.add(liststrings.get(i));
+}
+}
+System.out.println("elements in newstrings"+newstrings);
+}
+}
+
+
+
