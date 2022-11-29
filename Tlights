@@ -1,0 +1,51 @@
+import javax.swing.*;
+import javax.swing.event.*;
+import java.awt.*;
+import java.awt.event.*;
+class A extends JFrame implements ActionListener
+{
+public JLabel l1,l2;
+public JRadioButton r1,r2,r3;
+public JButton b;
+public ButtonGroup bg;
+public A()
+{
+setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+setSize(800,400);
+b=new JButton("hi");
+JPanel panel=new JPanel();
+r1=new JRadioButton("RED");
+r2=new  JRadioButton("YELLOW");
+r3=new JRadioButton("GREEN");
+panel.add(r1);
+panel.add(r2);
+panel.add(r3);
+bg=new ButtonGroup();
+bg.add(r1);
+bg.add(r2);
+bg.add(r3);
+add(panel,BorderLayout.NORTH);
+add(b,BorderLayout.SOUTH);
+r1.addActionListener(this);
+r2.addActionListener(this);
+r3.addActionListener(this);
+setVisible(true);
+}
+public void actionPerformed(ActionEvent e)
+{
+String s = e.getActionCommand();
+if(s.equals("RED"))
+	b.setText("stop");
+else if(s.equals("YELLOW"))
+	b.setText("ready");
+else if(s.equals("GREEN"))
+	b.setText("go");
+}
+}
+public class TLights
+{
+public static void main(String[]  args)
+{
+A a=new A();
+}
+}
