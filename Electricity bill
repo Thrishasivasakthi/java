@@ -1,0 +1,63 @@
+import java.util.*;
+class Eb
+{
+public static void main(String[] args)
+{
+double  amt;
+Scanner sc=new Scanner(System.in);
+System.out.println("enter cno:");
+int cno=sc.nextInt();
+System.out.println("enter customer name:");
+String name=sc.next();
+System.out.println("enter the previous reading:");
+int preading=sc.nextInt();
+System.out.println("enter the current reading:");
+int creading=sc.nextInt();
+double  units=creading-preading;
+double dunits=units-100;
+System.out.println("enter the connection type");
+System.out.println("1.domestic\n2.commercial");
+int type=sc.nextInt();
+switch(type)
+{
+case 1:
+if(dunits<=100)
+{
+amt=dunits*1;
+}
+else if(dunits<=200 && dunits>101)
+{
+amt=100+dunits*2.50;
+}
+else if(dunits<=500 && dunits>201)
+{
+amt=100+dunits*4;
+}
+else
+{
+amt=100+dunits*6;
+}
+System.out.println("CustomerName:"+name+"\nCustomerNumber:"+cno+"\nPreviousReading:"+preading+"\nCurrentReading"+creading+"\nAmount:"+amt);
+break;
+case 2:
+if(dunits<=100)
+{
+amt=dunits*2;
+}
+else if(dunits<=200 && dunits>101)
+{
+amt=100+dunits*4.50;
+}
+else if(dunits<=500 && dunits>201)
+{
+amt=100+dunits*6;
+}
+else
+{
+amt=100+dunits*7;
+}
+System.out.println("CustomerName:"+name+"\nCustomerNumber:"+cno+"\nPreviousReading:"+preading+"\nCurrentReading"+creading+"\nAmount:"+amt);
+break;
+}
+}
+}
