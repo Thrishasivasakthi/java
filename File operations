@@ -1,0 +1,28 @@
+import java.util.Scanner;
+import java.io.File;
+class FileDemo
+{
+public static void main(String[] args)
+{
+Scanner s=new Scanner(System.in);
+String st=s.nextLine();
+File f1=new File(st);
+System.out.println("File name:"+f1.getName());
+System.out.println("file path:"+f1.getPath());
+System.out.println("file absolutePath:"+f1.getAbsolutePath());
+System.out.println("file parent:"+f1.getParent());
+System.out.println("file exists:"+(f1.exists()?"Exists":"Does not exists"));
+System.out.println("isfile:"+f1.isFile());
+System.out.println("ishidden:"+f1.isHidden());
+System.out.println("can read"+f1.canRead());
+System.out.println("can write"+f1.canWrite());
+System.out.println("is absolute"+f1.isAbsolute());
+System.out.println("is directry"+f1.isDirectory());
+System.out.println("lastmoodified"+f1.lastModified());
+System.out.println("file length"+f1.length()+"bytes");
+}
+}
+
+
+
+
