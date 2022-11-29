@@ -1,0 +1,115 @@
+
+SOURCE CODE :
+import java.util.*;
+import java.util.Scanner; //nested package/ hierarchical package
+import java.util.ArrayList;
+import java.text.ParseException;
+import java.text.SimpleDateFormat; 
+ class Booking {
+	String passengerName;
+	int flightNo;
+	Date date;
+	
+	Booking(){
+		Scanner scanner = new Scanner(System.in);
+		System.out.println("Enter name of passenger: ");
+		passengerName = scanner.next();
+		System.out.println("Enter flight no: ");
+		flightNo = scanner.nextInt();
+		System.out.println("Enter date dd-mm-yyyy");
+		String dateInput = scanner.next();
+		SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
+		
+		try {
+			date = dateFormat.parse(dateInput);
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
+	
+	public boolean isAvailable(ArrayList<Booking> bookings, ArrayList<Flight> flights) {
+		int capacity = 0;
+		for(Flight f : flights) {
+			if(f.getFlightNo() == flightNo)
+				capacity =f.getCapacity();
+		}
+		
+		int booked = 0;
+		for(Booking b:bookings) {
+			if(b.flightNo == flightNo && b.date.equals(date)) {
+				booked++;
+			}
+		}
+		
+		return booked<capacity?true:false;
+		
+	}
+}
+ class Flight {
+	 int flightNo;
+	 boolean ac;
+	 int capacity; //get and set
+	
+	Flight(int no,int cap){
+		this.flightNo = no;
+		this.ac = ac;
+		this.capacity = cap;
+	}
+	
+	public int getFlightNo(){ //accessors
+		return flightNo;
+	}
+	
+	
+	public int getCapacity(){ //accessor method
+		return capacity;
+	}
+	
+	
+	
+	public void setCapacity(int cap) { //mutator
+		capacity = cap;
+	}
+	
+	public void displayFlightInfo(){
+		System.out.println("FlightNo:" + flightNo + " Total Capacity: " + capacity);
+	}
+}
+
+ class FlightDemo {
+
+	public static void main(String[] args) {
+		
+	
+		ArrayList<Flight> flights= new ArrayList<Flight>();
+		ArrayList<Booking> bookings = new ArrayList<Booking>();
+		
+		flights.add(new Flight(1,2));
+		flights.add(new Flight(2,50));
+		flights.add(new Flight(3,48));
+		
+		int userOpt = 1;
+		Scanner scanner = new Scanner(System.in);
+		
+		for(Flight f : flights) {
+			f.displayFlightInfo();
+		}
+		
+		while(userOpt==1) {
+			System.out.println("Enter 1 to Book and 2 to exit");
+			userOpt = scanner.nextInt();
+			if(userOpt == 1) {
+				Booking booking = new Booking();
+				if(booking.isAvailable(bookings,flights)) {
+					bookings.add(booking);
+					System.out.println("Your booking is confirmed");
+				}
+				else
+					System.out.println("Sorry. flight is full. Try another flight or date.");
+			}
+		}
+	}
+
+}
