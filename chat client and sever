@@ -1,0 +1,69 @@
+##chat client
+import java.io.*;
+import java.net.*;
+class Chatclient
+{
+public static void main(String args[])
+{
+try
+{
+BufferedReader sendread=new BufferedReader(new InputStreamReader(System.in));
+Socket so=new Socket("localhost",9999);
+System.out.println("client is ready for chatting");
+System.out.println("enter the message");
+InputStream in=so.getInputStream();
+BufferedReader receiveread=new BufferedReader(new InputStreamReader(in));
+OutputStream ou=so.getOutputStream();
+PrintWriter pr=new PrintWriter(ou);
+String receivemsg,sendmsg;
+while(true)
+{
+sendmsg=sendread.readLine();
+pr.println(sendmsg);
+pr.flush();
+if((receivemsg=receiveread.readLine())!=null)
+{
+System.out.println("msg received is:"+receivemsg);
+}
+}
+}
+catch(Exception e)
+{
+System.out.println(e.getMessage());
+}
+}
+}
+import java.io.*;
+import java.net.*;
+class Chatserver
+{
+public static void main(String args[])
+{
+try
+{
+BufferedReader sendread=new BufferedReader(new InputStreamReader(System.in));
+ServerSocket sock=new ServerSocket(9999);
+System.out.println("server is ready for chatting");
+Socket so=sock.accept();
+InputStream in=so.getInputStream();
+BufferedReader receiveread=new BufferedReader(new InputStreamReader(in));
+OutputStream ou=so.getOutputStream();
+PrintWriter pr=new PrintWriter(ou,true);
+String receivemsg,sendmsg;
+while(true)
+{
+if((receivemsg=receiveread.readLine())!=null)
+{
+System.out.println("msg received is:"+receivemsg);
+}
+sendmsg=sendread.readLine();
+pr.println(sendmsg);
+pr.flush();
+}
+}
+catch(Exception e)
+{
+System.out.println(e.getMessage());
+}
+}
+}
